@@ -15,6 +15,10 @@ public class Deck {
                 cards.add(new Card(suit, cardValue));
             }
         }
+        shuffleDeckRandomly();
+    }
+
+    private void shuffleDeckRandomly() {
         Collections.shuffle(cards);
     }
 
