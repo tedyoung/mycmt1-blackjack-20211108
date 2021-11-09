@@ -26,4 +26,20 @@ public class HandValueAceTest {
                 .isEqualTo(1 + 8 + 3);
     }
 
+    @Test
+    public void handWithOneAceAndOtherCardsEqualTo12IsValuedAt1() throws Exception {
+        Hand hand = HandFactory.createHand("A", "8", "4");
+
+        assertThat(hand.value())
+                .isEqualTo(1 + 8 + 4);
+    }
+
+    @Test
+    public void handWithOneAceAndTenValueCardAceIsValuedAt11() throws Exception {
+        Hand hand = HandFactory.createHand("A", "10");
+
+        assertThat(hand.value())
+                .isEqualTo(11 + 10); // EVIDENT DATA
+    }
+
 }
