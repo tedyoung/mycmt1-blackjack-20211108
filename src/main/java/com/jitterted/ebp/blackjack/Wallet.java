@@ -20,6 +20,10 @@ public class Wallet {
         return balance;
     }
 
+    public void bet(int betAmount) {
+        balance -= betAmount;
+    }
+
     private void requireGreaterThanZero(int amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException();
