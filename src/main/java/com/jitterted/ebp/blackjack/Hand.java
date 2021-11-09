@@ -9,15 +9,21 @@ import static org.fusesource.jansi.Ansi.ansi;
 public class Hand {
     private final List<Card> cards = new ArrayList<>();
 
+    public Hand() {
+    }
+
+    public Hand(List<Card> cards) {
+        this.cards.addAll(cards);
+    }
+
     int value() {
-        List<Card> hand1 = cards;
-        int handValue = hand1
+        int handValue = cards
                 .stream()
                 .mapToInt(Card::rankValue)
                 .sum();
 
         // does the hand contain at least 1 Ace?
-        boolean hasAce = hand1
+        boolean hasAce = cards
                 .stream()
                 .anyMatch(card -> card.rankValue() == 1);
 
