@@ -20,8 +20,25 @@ public class Wallet {
         return balance;
     }
 
+    // boolean canBet(int betAmount)
+    // balance >= betAmount <-- maybe? plus a little credit
+
     public void bet(int betAmount) {
+        requireZeroOrMore(betAmount);
+        requireSufficientBalanceToBet(betAmount);
         balance -= betAmount;
+    }
+
+    private void requireZeroOrMore(int betAmount) {
+        if (betAmount < 0) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void requireSufficientBalanceToBet(int betAmount) {
+        if (balance < betAmount) {
+            throw new IllegalStateException();
+        }
     }
 
     private void requireGreaterThanZero(int amount) {
