@@ -46,10 +46,12 @@ public class Hand {
                                        ansi().cursorUp(6).cursorRight(1).toString())));
     }
 
+    // belongs to Dealer?
     Card firstCard() {
         return cards.get(0);
     }
 
+    // belongs to Dealer?
     boolean dealerShouldHit() {
         // Dealer makes its choice automatically based on a simple heuristic (<=16, hit, 17>=stand)
         return value() <= 16;
