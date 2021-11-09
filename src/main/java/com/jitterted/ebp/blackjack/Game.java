@@ -82,11 +82,11 @@ public class Game {
     private void displayOutcome(boolean playerBusted) {
         if (playerBusted) {
             System.out.println("You Busted, so you lose.  💸");
-        } else if (dealerHand.value() > 21) {
+        } else if (dealerHand.isBusted()) {
             System.out.println("Dealer went BUST, Player wins! Yay for you!! 💵");
-        } else if (dealerHand.value() < playerHand.value()) {
+        } else if (playerHand.beats(dealerHand)) {
             System.out.println("You beat the Dealer! 💵");
-        } else if (dealerHand.value() == playerHand.value()) {
+        } else if (playerHand.pushes(dealerHand)) {
             System.out.println("Push: You tie with the Dealer. 💸");
         } else {
             System.out.println("You lost to the Dealer. 💸");
@@ -95,7 +95,7 @@ public class Game {
 
     private void dealerTurn(boolean playerBusted) {
         if (!playerBusted) {
-            while (dealerShouldHit()) {
+            while (dealerHand.dealerShouldHit()) {
                 dealerHand.drawCardFrom(deck);
             }
         }
@@ -112,7 +112,7 @@ public class Game {
             }
             if (playerHits(playerChoice)) {
                 playerHand.drawCardFrom(deck);
-                if (playerHand.value() > 21) {
+                if (playerHand.isBusted()) {
                     playerBusted = true;
                 }
             } else {
@@ -128,11 +128,6 @@ public class Game {
 
     private boolean playerStands(String playerChoice) {
         return playerChoice.startsWith("s");
-    }
-
-    private boolean dealerShouldHit() {
-        // Dealer makes its choice automatically based on a simple heuristic (<=16, hit, 17>=stand)
-        return dealerHand.value() <= 16;
     }
 
 

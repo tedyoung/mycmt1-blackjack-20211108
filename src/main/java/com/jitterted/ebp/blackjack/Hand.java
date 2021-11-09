@@ -49,4 +49,21 @@ public class Hand {
     Card firstCard() {
         return cards.get(0);
     }
+
+    boolean dealerShouldHit() {
+        // Dealer makes its choice automatically based on a simple heuristic (<=16, hit, 17>=stand)
+        return value() <= 16;
+    }
+
+    boolean isBusted() {
+        return value() > 21;
+    }
+
+    boolean pushes(Hand dealerHand) {
+        return dealerHand.value() == value();
+    }
+
+    boolean beats(Hand dealerHand) {
+        return dealerHand.value() < value();
+    }
 }
