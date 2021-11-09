@@ -32,14 +32,25 @@ public class WalletTest {
                 .isZero();
     }
 
-//    @Test
-//    public void newWalletAddMoney7ThenBalanceIs7() throws Exception {
-//        Wallet wallet = new Wallet();
-//
-//        wallet.addMoney(7);
-//
-//        assertThat(wallet.balance())
-//                .isEqualTo(7);
-//    }
+    @Test
+    public void newWalletAddMoney7ThenBalanceIs7() throws Exception {
+        Wallet wallet = new Wallet();
+
+        wallet.addMoney(7);
+
+        assertThat(wallet.balance())
+                .isEqualTo(7);
+    }
+
+    @Test
+    public void newWalletAddMoney9AndAdd12ThenBalanceIs21() throws Exception {
+        Wallet wallet = new Wallet();
+
+        wallet.addMoney(9);
+        wallet.addMoney(12);
+
+        assertThat(wallet.balance())
+                .isEqualTo(9 + 12);
+    }
 
 }
