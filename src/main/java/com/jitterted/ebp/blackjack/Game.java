@@ -205,4 +205,7 @@ public class Game {
         playerBalance += playerBetAmount * 2;
     }
 
+    public void playerLoses() {
+        // ?
+    }
 }
